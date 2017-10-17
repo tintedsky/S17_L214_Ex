@@ -1,0 +1,5 @@
+1. In Objective-C, a class is itself an object with an opaque type called Class. Classes can’t have properties defined using the declaration syntax shown earlier for instances, but they can receive messages.
+
+2. The typical use for a class method is as a factory method.
+
+
