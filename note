@@ -2,4 +2,39 @@
 
 2. The typical use for a class method is as a factory method.
 
+-------- Working with Objects ------------
+Address: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithObjects/WorkingwithObjects.html
+
+1. NSLog() uses format specifiers to indicate substitution tokens, just like the C standard library printf() function.
+
+2. The substitution token %@ used to denote an object.  At runtime, this specifier will be substituted with the result of calling either the descriptionWithLocale: method (if it exists) or the description method on the provided object. The description method is implemented by NSObject to return the class and memory address of the object, but many Cocoa and Cocoa Touch classes override it to provide more useful information. In the case of NSString, the description method simply returns the string of characters that it represents.
+
+3. There are some memory management considerations in this situation: a returned object (created on the heap) needs to exist long enough for it to be used by the original caller of the method, but not in perpetuity because that would create a memory leak. For the most part, the Automatic Reference Counting (ARC) feature of the Objective-C compiler takes care of these considerations for you.
+
+4. Whenever you’re writing a method implementation, you have access to an important hidden value, self.
+
+5. There’s another important keyword available to you in Objective-C, called super.
+
+6. Note: It’s possible for init to return a different object than was created by alloc, so it’s best practice to nest the calls as shown.
+
+7. Never initialize an object without reassigning any pointer to that object. As     an example, don’t do this:
+      NSObject *someObject = [NSObject alloc];
+      [someObject init];
+   If the call to init returns some other object, you’ll be left with a pointer      to the object that was originally allocated but never initialized.
+
+8. Use new to Create an Object If No Arguments Are Needed for Initialization
+  It’s also possible to create an instance of a class using the new class method.   This method is provided by NSObject and doesn’t need to be overridden in your     own subclasses.
+
+  It’s effectively the same as calling alloc and init with no arguments:
+
+    XYZObject *object = [XYZObject new];
+    // is effectively the same as:
+    XYZObject *object = [[XYZObject alloc] init];
+
+9. Because of Objective-C’s dynamic nature, it doesn’t matter what specific class type you use for that pointer—the correct method will always be called on the relevant object when you send it a message.
+
+10.Note: If you expect a return value from a message sent to nil, the return value will be nil for object return types, 0 for numeric types, and NO for BOOL types. Returned structures have all members initialized to zero.
+
+ 
+
 

@@ -13,5 +13,8 @@
 @property NSString *lastName;
 @property NSDate *dateOfBirth;
 -(void)sayHello;
-+(void)person;
+-(void)sayGoodBye;
+-(void)sayHow;
+-(void)saySomething:(NSString*)greeting;
++(id)person;
 @end

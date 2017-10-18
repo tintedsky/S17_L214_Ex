@@ -9,9 +9,29 @@
 #import "XYZPerson.h"
 
 @implementation XYZPerson
+
+
 -(void)sayHello{
-    NSLog(@"Hello World!");
+    [self saySomething:@"Hello World!"];
 }
-//+(void)person{
-//}
+
+-(void)saySomething:(NSString*) greeting{
+    NSLog(@"%@", greeting);
+}
+
+-(void)sayGoodBye{
+    NSString *goodBye = @"Good Bye!!!";
+    [self saySomething:goodBye];
+}
+
+-(void)sayHow{
+    NSString *str = @"How are you doing?";
+    NSString *how = [NSString stringWithString:str];
+    [self saySomething:how];
+}
+
++(id)person{
+    return [[self alloc]init];
+}
+
 @end
