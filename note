@@ -77,4 +77,9 @@ Note: A variable maintains a strong reference to an object only as long as that 
 	
 9. In a factory method, we can call [[self alloc]init], then we can use the object function;
 
+10. NSMutableString cannot initialized by literal String like @"John", it should be initialized as follow:
+    NSMutableString *str = [NSMutableString stringWithString:@"John"];
+	
+11. 
+
 
