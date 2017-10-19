@@ -16,15 +16,13 @@
 @property NSString *lastName;
 @property NSDate *dateOfBirth;
 @property (weak) XYZPerson *partner;
+@property (readonly) NSString *uniqueIdentifier;
 
--(void)dealloc;
 -(id)init;
 -(id)init:(NSString*)firstName lastName:(NSString*)lastName;
 
 -(void)sayHello;
--(void)sayGoodBye;
--(void)sayHow;
 -(void)saySomething:(NSString*)greeting;
--(id) initWithFirstName:(NSString*)firstNameMutable lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth;
+-(void) initWithFirstName:(NSString*)firstNameMutable lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth;
 
 @end

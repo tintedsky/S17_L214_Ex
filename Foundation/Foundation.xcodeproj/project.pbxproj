@@ -10,6 +10,7 @@
 		FC3BBD0A1F9684E400E9E5C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD091F9684E400E9E5C6 /* main.m */; };
 		FC3BBD121F96856900E9E5C6 /* XYZPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD111F96856900E9E5C6 /* XYZPerson.m */; };
 		FC3BBD151F96BC7800E9E5C6 /* XYZShoutingPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */; };
+		FC3BBD181F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		FC3BBD111F96856900E9E5C6 /* XYZPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZPerson.m; sourceTree = "<group>"; };
 		FC3BBD131F96BC7800E9E5C6 /* XYZShoutingPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZShoutingPerson.h; sourceTree = "<group>"; };
 		FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZShoutingPerson.m; sourceTree = "<group>"; };
+		FC3BBD161F9925B800E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XYZPerson+XYZPersonNameDisplayAdditions.h"; sourceTree = "<group>"; };
+		FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XYZPerson+XYZPersonNameDisplayAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				FC3BBD111F96856900E9E5C6 /* XYZPerson.m */,
 				FC3BBD131F96BC7800E9E5C6 /* XYZShoutingPerson.h */,
 				FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */,
+				FC3BBD161F9925B800E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.h */,
+				FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC3BBD121F96856900E9E5C6 /* XYZPerson.m in Sources */,
+				FC3BBD181F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m in Sources */,
 				FC3BBD151F96BC7800E9E5C6 /* XYZShoutingPerson.m in Sources */,
 				FC3BBD0A1F9684E400E9E5C6 /* main.m in Sources */,
 			);

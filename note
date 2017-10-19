@@ -86,5 +86,14 @@ Note: A variable maintains a strong reference to an object only as long as that 
 3. Please see the code in Ex2 and Ex3 for the problem.
 4. Try use the same test code in main with different init functions (EX2-3 and EX4), you will find where the problem is.
 
+-----------Chapter 5: Customizing existing class ------------
 
+1. If you need to add a method to an existing class, perhaps to add functionality to make it easier to do something in your own application, the easiest way is to use a category.
 
+2. A category is usually declared in a separate header file and implemented in a separate source code file. In the case of XYZPerson, you might declare the category in a header file called XYZPerson+XYZPersonNameDisplayAdditions.h.
+
+3. Categories can be used to declare either instance methods or class methods but are not usually suitable for declaring additional properties. It’s valid syntax to include a property declaration in a category interface, but it’s not possible to declare an additional instance variable in a category. This means the compiler won’t synthesize any instance variable, nor will it synthesize any property accessor methods. You can write your own accessor methods in the category implementation, but you won’t be able to keep track of a value for that property unless it’s already stored by the original class.
+
+The only way to add a traditional property—backed by a new instance variable—to an existing class is to use a class extension, as described in Class Extensions Extend the Internal Implementation.
+
+4. 
