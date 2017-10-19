@@ -13,18 +13,20 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //__strong is the default value
-        XYZPerson *xyzPerson1 =[[XYZPerson alloc] init];
-        XYZPerson * __weak xyzWeakPerson = xyzPerson1;
-        NSLog(@"Now the object %@ has one more weak link", xyzWeakPerson);
-        
-        XYZPerson *xyzPerson2 =[[XYZPerson alloc] init:@"Jacek" lastName:@"Novasky"];
-        XYZPerson *xyzStrongPerson = xyzPerson2;
-        NSLog(@"Now the object %@ has one more Strong link", xyzStrongPerson);
+        XYZPerson *xyzPerson =[[XYZPerson alloc] init];
+        XYZPerson __strong *partner = [[XYZPerson alloc] init:@"luke" lastName:@"Sky"];
+        [xyzPerson setPartner: partner];
+        NSLog(@"Now the object %@ has partner %@", xyzPerson, partner);
 
-        xyzPerson1 = nil;
-        xyzPerson2 = nil;
-        NSLog(@"Now the original references to both objects are reset to nil");
-        
+//      Test 1 switch
+        NSLog(@"Before reset partner's original pointer");
+        partner = nil;
+        NSLog(@"After reset partner's original pointer");
+
+//      Test 2 block
+//        NSLog(@"Before the original reference to %@ has been reset to nil", xyzPerson);
+//        xyzPerson = nil; // Now the person "luke Skey" is still alive coz of *partner;
+//        NSLog(@"Now the original references has been reset to nil, but %@ still alive", partner);
     }
     return 0;
 }

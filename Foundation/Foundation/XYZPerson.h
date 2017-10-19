@@ -15,6 +15,7 @@
 @property NSString *firstName;
 @property NSString *lastName;
 @property NSDate *dateOfBirth;
+@property (weak) XYZPerson *partner;
 
 -(void)dealloc;
 -(id)init;
