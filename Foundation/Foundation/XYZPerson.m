@@ -10,25 +10,31 @@
 
 @implementation XYZPerson
 
--(id) initWithFirstName:(NSMutableString*)firstNameMutable lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth{
-    self.firstNameMutable = firstNameMutable;
-    self.firstName = self.firstNameMutable;
+-(id) initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth{
+    self.firstName = firstName;
     self.lastName = lastName;
     self.dateOfBirth = dateOfBirth;
     return self;
 }
 
-+(id)init{
-    id person = [[self alloc]init];  //In a factory method, we can call [[self alloc]init]
-    NSMutableString *str = [NSMutableString stringWithString:@"John"];
-    if(person){
-       return [person initWithFirstName:str lastName:@"Doe" dateOfBirth:nil];
+// init has to be object function instead of class function;
+-(id)init{
+    self = [super init];  //In a factory method, we can call [[self alloc]init]
+    if(self){
+       return [self initWithFirstName:@"John" lastName:@"Doe" dateOfBirth:nil];
     }
-    return person;
+    return self;
+}
+
+-(id)init:(NSString*)firstName lastName:(NSString*)lastName{
+    self = [super init];  //In a factory method, we can call [[self alloc]init]
+    if(self){
+        return [self initWithFirstName:firstName lastName:lastName dateOfBirth:nil];
+    }
+    return self;
 }
 
 -(void)sayHello{
-    [self.firstNameMutable appendString:@"ny"];
     NSString *greeting = [NSString stringWithFormat:@"Hello %@ %@!", self.firstName, _lastName];
     [self saySomething:greeting];
 }
@@ -48,8 +54,8 @@
     [self saySomething:how];
 }
 
-+(id)person{
-    return [[self alloc]init];
+-(void) dealloc{
+    NSLog(@"%@ is being deallcated", self);  // test if self can print out the object name;
 }
 
 @end

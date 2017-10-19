@@ -12,16 +12,19 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        //__strong is the default value
+        XYZPerson *xyzPerson1 =[[XYZPerson alloc] init];
+        XYZPerson * __weak xyzWeakPerson = xyzPerson1;
+        NSLog(@"Now the object %@ has one more weak link", xyzWeakPerson);
         
-        XYZShoutingPerson *person = [XYZShoutingPerson init];
-        [person sayHello];
-        [person sayGoodBye];
-        [person sayHow];
+        XYZPerson *xyzPerson2 =[[XYZPerson alloc] init:@"Jacek" lastName:@"Novasky"];
+        XYZPerson *xyzStrongPerson = xyzPerson2;
+        NSLog(@"Now the object %@ has one more Strong link", xyzStrongPerson);
+
+        xyzPerson1 = nil;
+        xyzPerson2 = nil;
+        NSLog(@"Now the original references to both objects are reset to nil");
         
-        XYZPerson *xyzPerson;
-        if(!xyzPerson){
-            NSLog(@"xyzPerson is nil");
-        }
     }
     return 0;
 }

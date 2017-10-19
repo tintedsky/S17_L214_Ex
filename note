@@ -80,6 +80,11 @@ Note: A variable maintains a strong reference to an object only as long as that 
 10. NSMutableString cannot initialized by literal String like @"John", it should be initialized as follow:
     NSMutableString *str = [NSMutableString stringWithString:@"John"];
 	
-11. 
+-------------Ex 4--------------
+1. init has to be object function instead of class function;
+2. The error I have made is I used a third pointer to point to the object. Person.
+3. Please see the code in Ex2 and Ex3 for the problem.
+4. Try use the same test code in main with different init functions (EX2-3 and EX4), you will find where the problem is.
+
 
 
