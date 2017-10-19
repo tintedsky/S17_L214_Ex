@@ -13,7 +13,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        XYZShoutingPerson *person = [XYZShoutingPerson person];
+        XYZShoutingPerson *person = [XYZShoutingPerson init];
         [person sayHello];
         [person sayGoodBye];
         [person sayHow];

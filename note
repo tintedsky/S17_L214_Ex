@@ -35,6 +35,46 @@ Address: https://developer.apple.com/library/content/documentation/Cocoa/Concept
 
 10.Note: If you expect a return value from a message sent to nil, the return value will be nil for object return types, 0 for numeric types, and NO for BOOL types. Returned structures have all members initialized to zero.
 
- 
+-------- Encapsulating Data ------------
+
+1. ARC: Automatic Reference Counting
+
+2. Strong reference cycles might lead to memory leaks.
+
+3. Use Accessor method to Get/Set Property values.
+
+4. The synthesized methods follow specific naming conventions:
+
+The method used to access the value (the getter method) has the same name as the property.
+The getter method for a property called firstName will also be called firstName.
+
+The method used to set the value (the setter method) starts with the word “set” and then uses the capitalized property name.
+
+The setter method for a property called firstName will be called setFirstName:.
+
+5. it’s possible to add an attribute on the property:
+   @property (getter=isFinished) BOOL finished;
+   
+6. When one object relies on other objects in this way, effectively taking ownership of those other objects, the first object is said to have strong references to the other objects. In Objective-C, an object is kept alive as long as it has at least one strong reference to it from another object.
+
+7.Local variables (and non-property instance variables) also maintain strong references to objects by default. This means that the following code will work exactly as you expect:
+
+    NSDate *originalDate = self.lastModificationDate;
+    self.lastModificationDate = [NSDate date];
+    NSLog(@"Last modification date changed from %@ to %@",
+                        originalDate, self.lastModificationDate);
+In this example, the local variable originalDate maintains a strong reference to the initial lastModificationDate object. When the lastModificationDate property is changed, the property no longer keeps a strong reference to the original date, but that date is still kept alive by the originalDate strong variable.
+
+Note: A variable maintains a strong reference to an object only as long as that variable is in scope, or until it is reassigned to another object or nil.
+
+8. because in a multi-threaded application, the property may be deallocated between the test and the method call, rendering the test useless. Instead, you need to declare a strong local variable to cache the value, like this:
+
+    NSObject *cachedObject = self.someWeakProperty;           // 1
+    if (cachedObject) {                                       // 2
+        [someObject doSomethingImportantWith:cachedObject];   // 3
+    }                                                         // 4
+    cachedObject = nil;                                       // 5
+	
+9. In a factory method, we can call [[self alloc]init], then we can use the object function;
 
 

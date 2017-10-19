@@ -16,5 +16,7 @@
 -(void)sayGoodBye;
 -(void)sayHow;
 -(void)saySomething:(NSString*)greeting;
+-(id) initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth;
++(id)init;
 +(id)person;
 @end
