@@ -15,14 +15,15 @@
 @property NSString *firstName;
 @property NSString *lastName;
 @property NSDate *dateOfBirth;
-@property (weak) XYZPerson *partner;
-@property (readonly) NSString *uniqueIdentifier;
+@property (readonly) NSNumber* height;
+@property (readonly) NSNumber* weight;
 
 -(id)init;
--(id)init:(NSString*)firstName lastName:(NSString*)lastName;
+-(id)init:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth height:(NSNumber*)height weight:(NSNumber*)weight;
+-(id)initWithFirstName:(NSString*)firstName lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth height:(NSNumber*)height weight:(NSNumber *)weight;
 
 -(void)sayHello;
 -(void)saySomething:(NSString*)greeting;
--(void) initWithFirstName:(NSString*)firstNameMutable lastName:(NSString*)lastName dateOfBirth:(NSDate*)dateOfBirth;
 
+-(NSNumber *)measureHeight;
 @end

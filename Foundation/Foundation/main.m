@@ -15,16 +15,10 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //__strong is the default value
-        XYZPerson *xyzPerson =[[XYZPerson alloc] init];
-        XYZShoutingPerson *xyzShoutingPerson = [[XYZShoutingPerson alloc] init:@"Muge" lastName:@"Niu"];
-        
-        [xyzPerson sayHello];
-        [xyzShoutingPerson sayHello];
-        
-        NSLog(@"xyzPerson %@", [xyzPerson lastNameFirstNameString]);
-        NSLog(@"xyzShoutingPerson %@", [xyzShoutingPerson lastNameFirstNameString]);
-        NSLog(@"get name in uppercase from NSString Category: %@", [[xyzShoutingPerson lastNameFirstNameString] xyz_getUpperCaseString]);
-
+        NSNumber *weight = [NSNumber numberWithInt:40];
+        NSNumber *height = [NSNumber numberWithInt:120];
+        XYZShoutingPerson *xyzShoutingPerson = [[XYZShoutingPerson alloc] init:@"Muge" lastName:@"Niu"  dateOfBirth:nil  height:height weight:weight];
+        NSLog(@"%@'s Height is %@", [xyzShoutingPerson firstName], [[xyzShoutingPerson measureHeight] stringValue]);
     }
     return 0;
 }

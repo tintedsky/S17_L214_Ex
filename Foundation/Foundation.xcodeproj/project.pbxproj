@@ -37,6 +37,7 @@
 		FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XYZPerson+XYZPersonNameDisplayAdditions.m"; sourceTree = "<group>"; };
 		FC3BBD4A1F9A535300E9E5C6 /* NSString+XYZUpperCaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XYZUpperCaseAdditions.h"; sourceTree = "<group>"; };
 		FC3BBD4B1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XYZUpperCaseAdditions.m"; sourceTree = "<group>"; };
+		FC3BBD4D1F9A6BC400E9E5C6 /* XYZPersonPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZPersonPrivate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +72,7 @@
 			children = (
 				FC3BBD091F9684E400E9E5C6 /* main.m */,
 				FC3BBD101F96856900E9E5C6 /* XYZPerson.h */,
+				FC3BBD4D1F9A6BC400E9E5C6 /* XYZPersonPrivate.h */,
 				FC3BBD111F96856900E9E5C6 /* XYZPerson.m */,
 				FC3BBD131F96BC7800E9E5C6 /* XYZShoutingPerson.h */,
 				FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */,
