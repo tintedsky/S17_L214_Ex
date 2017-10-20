@@ -10,6 +10,7 @@
 #import "XYZPerson.h"
 #import "XYZShoutingPerson.h"
 #import "XYZPerson+XYZPersonNameDisplayAdditions.h"
+#import "NSString+XYZUpperCaseAdditions.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -22,6 +23,8 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"xyzPerson %@", [xyzPerson lastNameFirstNameString]);
         NSLog(@"xyzShoutingPerson %@", [xyzShoutingPerson lastNameFirstNameString]);
+        NSLog(@"get name in uppercase from NSString Category: %@", [[xyzShoutingPerson lastNameFirstNameString] xyz_getUpperCaseString]);
+
     }
     return 0;
 }

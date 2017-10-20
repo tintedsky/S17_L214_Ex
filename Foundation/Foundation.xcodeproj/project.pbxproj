@@ -11,6 +11,7 @@
 		FC3BBD121F96856900E9E5C6 /* XYZPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD111F96856900E9E5C6 /* XYZPerson.m */; };
 		FC3BBD151F96BC7800E9E5C6 /* XYZShoutingPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */; };
 		FC3BBD181F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */; };
+		FC3BBD4C1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3BBD4B1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZShoutingPerson.m; sourceTree = "<group>"; };
 		FC3BBD161F9925B800E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XYZPerson+XYZPersonNameDisplayAdditions.h"; sourceTree = "<group>"; };
 		FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XYZPerson+XYZPersonNameDisplayAdditions.m"; sourceTree = "<group>"; };
+		FC3BBD4A1F9A535300E9E5C6 /* NSString+XYZUpperCaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XYZUpperCaseAdditions.h"; sourceTree = "<group>"; };
+		FC3BBD4B1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XYZUpperCaseAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				FC3BBD141F96BC7800E9E5C6 /* XYZShoutingPerson.m */,
 				FC3BBD161F9925B800E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.h */,
 				FC3BBD171F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m */,
+				FC3BBD4A1F9A535300E9E5C6 /* NSString+XYZUpperCaseAdditions.h */,
+				FC3BBD4B1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				FC3BBD121F96856900E9E5C6 /* XYZPerson.m in Sources */,
 				FC3BBD181F99268500E9E5C6 /* XYZPerson+XYZPersonNameDisplayAdditions.m in Sources */,
 				FC3BBD151F96BC7800E9E5C6 /* XYZShoutingPerson.m in Sources */,
+				FC3BBD4C1F9A53CF00E9E5C6 /* NSString+XYZUpperCaseAdditions.m in Sources */,
 				FC3BBD0A1F9684E400E9E5C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
