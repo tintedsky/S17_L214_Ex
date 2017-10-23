@@ -25,5 +25,6 @@
 -(void)sayHello;
 -(void)saySomething:(NSString*)greeting;
 
+-(void)assignHeight:(NSNumber*)height;
 -(NSNumber *)measureHeight;
 @end

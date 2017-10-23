@@ -62,4 +62,11 @@
     return self.height;
 }
 
+-(void)assignHeight:(NSNumber*)height{
+    if([height intValue] > 0 && [height intValue] < 300){
+        self.height = height;
+    }
+}
+
+
 @end

@@ -18,6 +18,7 @@ int main(int argc, const char * argv[]) {
         NSNumber *weight = [NSNumber numberWithInt:40];
         NSNumber *height = [NSNumber numberWithInt:120];
         XYZShoutingPerson *xyzShoutingPerson = [[XYZShoutingPerson alloc] init:@"Muge" lastName:@"Niu"  dateOfBirth:nil  height:height weight:weight];
+        [xyzShoutingPerson assignHeight:[NSNumber numberWithInt:125]];
         NSLog(@"%@'s Height is %@", [xyzShoutingPerson firstName], [[xyzShoutingPerson measureHeight] stringValue]);
     }
     return 0;

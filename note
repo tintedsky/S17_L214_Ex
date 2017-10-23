@@ -96,4 +96,136 @@ Note: A variable maintains a strong reference to an object only as long as that 
 
 The only way to add a traditional property—backed by a new instance variable—to an existing class is to use a class extension, as described in Class Extensions Extend the Internal Implementation.
 
-4. 
+4. The compiler will complain if code in one of those other source code files attempts to call a private method or set a readonly property, but it’s possible to avoid compiler errors and leverage dynamic runtime features to call those methods in other ways, such as by using one of the performSelector:... methods offered by NSObject. You should avoid a class hierarchy or design where this is necessary; instead, the primary class interface should always define the correct “public” interactions.
+
+If you intend to make “private” methods or properties available to select other classes, such as related classes within a framework, you can declare the class extension in a separate header file and import it in the source files that need it. It’s not uncommon to have two header files for a class, for example, such as XYZPerson.h and XYZPersonPrivate.h. When you release the framework, you only release the public XYZPerson.h header file.
+
+-----------Working With Protocols--------------
+1.Check that Optional Methods Are Implemented at Runtime
+
+If a method in a protocol is marked as optional, you must check whether an object implements that method before attempting to call it.
+
+As an example, the pie chart view might test for the segment title method like this:
+
+    NSString *thisSegmentTitle;
+    if ([self.dataSource respondsToSelector:@selector(titleForSegmentAtIndex:)]) {
+        thisSegmentTitle = [self.dataSource titleForSegmentAtIndex:index];
+    }
+The respondsToSelector: method uses a selector, which refers to the identifier for a method after compilation. You can provide the correct identifier by using the @selector() directive and specifying the name of the method.
+
+If the data source in this example implements the method, the title is used; otherwise, the title remains nil.
+
+Remember: Local object variables are automatically initialized to nil.
+If you attempt to call the respondsToSelector: method on an id conforming to the protocol as it’s defined above, you’ll get a compiler error that there’s no known instance method for it. Once you qualify an id with a protocol, all static type-checking comes back; you’ll get an error if you try to call any method that isn’t defined in the specified protocol. One way to avoid the compiler error is to set the custom protocol to adopt the NSObject protocol.
+
+-------------------
+
+1. It’s best practice to use these platform-specific types if you might be passing values across API boundaries (both internal and exported APIs), such as arguments or return values in method or function calls between your application code and a framework.
+
+2. NSNumber is actually a class cluster. This means that when you create an instance at runtime, you’ll get a suitable concrete subclass to hold the provided value. Just treat the created object as an instance of NSNumber.
+
+3. It’s also possible to create NSValue objects to represent custom structures. If you have a particular need to use a C structure (rather than an Objective-C object) to store information, like this:
+
+typedef struct {
+    int i;
+    float f;
+} MyIntegerFloatStruct;
+you can create an NSValue instance by providing a pointer to the structure as well as an encoded Objective-C type. The @encode() compiler directive is used to create the correct Objective-C type, like this:
+
+    struct MyIntegerFloatStruct aStruct;
+    aStruct.i = 42;
+    aStruct.f = 3.14;
+ 
+    NSValue *structValue = [NSValue value:&aStruct
+                             withObjCType:@encode(MyIntegerFloatStruct)];
+The standard C reference operator (&) is used to provide the address of aStruct for the value parameter.
+
+4. Sorting Array Objects
+
+The NSArray class also offers a variety of methods to sort its collected objects. Because NSArray is immutable, each of these methods returns a new array containing the items in the sorted order.
+
+As an example, you can sort an array of strings by the result of calling compare: on each string, like this:
+
+    NSArray *unsortedStrings = @[@"gammaString", @"alphaString", @"betaString"];
+    NSArray *sortedStrings =
+                 [unsortedStrings sortedArrayUsingSelector:@selector(compare:)];
+
+5. Although the NSArray class itself is immutable, this has no bearing on any collected objects. If you add a mutable string to an immutable array, for example, like this:
+
+NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
+NSArray *immutableArray = @[mutableString];there’s nothing to stop you from mutating the string:
+
+    if ([immutableArray count] > 0) {
+        id string = immutableArray[0];
+        if ([string isKindOfClass:[NSMutableString class]]) {
+            [string appendString:@" World!"];
+        }
+    }
+	
+6.Dictionaries Collect Key-Value Pairs
+Rather than simply maintaining an ordered or unordered collection of objects, an NSDictionary stores objects against given keys, which can then be used for retrieval.
+
+It’s best practice to use string objects as dictionary keys, as shown in Figure 6-3.
+
+------------Working with  blocks-------------
+1. Note: If you attempt to invoke a block using an unassigned variable (a nil block variable), your app will crash.
+
+2. Only the value is captured, unless you specify otherwise. This means that if you change the external value of the variable between the time you define the block and the time it’s invoked, like this:
+
+    int anInteger = 42;
+ 
+    void (^testBlock)(void) = ^{
+        NSLog(@"Integer is: %i", anInteger);
+    };
+ 
+    anInteger = 84;
+ 
+    testBlock();
+the value captured by the block is unaffected. This means that the log output would still show:
+
+Integer is: 42
+It also means that the block cannot change the value of the original variable, or even the captured value (it’s captured as a const variable).
+
+3. A Block Should Always Be the Last Argument to a Method
+
+It’s best practice to use only one block argument to a method. If the method also needs other non-block arguments, the block should come last:
+
+- (void)beginTaskWithName:(NSString *)name completion:(void(^)(void))callback;
+This makes the method call easier to read when specifying the block inline, like this:
+
+    [self beginTaskWithName:@"MyTask" completion:^{
+        NSLog(@"The task is complete");
+    }];
+	
+4. Custom type definitions are particularly useful when dealing with blocks that return blocks or take other blocks as arguments. Consider the following example:
+
+void (^(^complexBlock)(void (^)(void)))(void) = ^ (void (^aBlock)(void)) {
+    ...
+    return ^{
+        ...
+    };
+};
+The complexBlock variable refers to a block that takes another block as an argument (aBlock) and returns yet another block.
+
+Rewriting the code to use a type definition makes this much more readable:
+
+XYZSimpleBlock (^betterBlock)(XYZSimpleBlock) = ^ (XYZSimpleBlock aBlock) {
+    ...
+    return ^{
+        ...
+    };
+};
+
+5. To avoid this problem, it’s best practice to capture a weak reference to self, like this:
+
+- (void)configureBlock {
+    XYZBlockKeeper * __weak weakSelf = self;
+    self.block = ^{
+        [weakSelf doSomething];   // capture the weak reference
+                                  // to avoid the reference cycle
+    }
+}
+By capturing the weak pointer to self, the block won’t maintain a strong relationship back to the XYZBlockKeeper object. If that object is deallocated before the block is called, the weakSelf pointer will simply be set to nil.
+
+
+
