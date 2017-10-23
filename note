@@ -228,4 +228,27 @@ XYZSimpleBlock (^betterBlock)(XYZSimpleBlock) = ^ (XYZSimpleBlock aBlock) {
 By capturing the weak pointer to self, the block won’t maintain a strong relationship back to the XYZBlockKeeper object. If that object is deallocated before the block is called, the weakSelf pointer will simply be set to nil.
 
 
+6. git delete a remote branch:
+git push origin --detele Chapter_6_8_working_with_Protocols_Blocks_Value
 
+------------Work with Errors--------------
+1. You should not use a try-catch block in place of standard programming checks for Objective-C methods. In the case of an NSArray, for example, you should always check the array’s count to determine the number of items before trying to access an object at a given index. The objectAtIndex: method throws an exception if you make an out-of-bounds request so that you can find the bug in your code early in the development cycle—you should avoid throwing exceptions in an app that you ship to users.
+
+------------- Conventions -------------
+1. if a method includes an error pointer parameter to be set if an error occurred, this should be the last parameter to the method. If a method takes a block, the block parameter should be the last parameter in order to make any method invocations as readable as possible when specifying a block inline. For the same reason, it’s best to avoid methods that take multiple block arguments, wherever possible.
+
+2.Although the C language does allow you to declare a new local variable with the same name as one declared in the enclosing scope, like this:
+
+- (void)someMethod {
+    int interestingNumber = 42;
+    ...
+    for (NSNumber *eachNumber in array) {
+        int interestingNumber = [eachNumber intValue]; // not advisable
+        ...
+    }
+}
+it makes the code confusing and less readable, so it’s best practice to avoid this wherever possible.
+
+3. Class factory methods should always start with the name of the class (without the prefix) that they create, with the exception of subclasses of classes with existing factory methods. In the case of the NSArray class, for example, the factory methods start with array. The NSMutableArray class doesn’t define any of its own class-specific factory methods, so the factory methods for a mutable array still begin with array.
+
+There are various memory management rules underpinning Objective-C, which the compiler uses to ensure objects are kept alive as long as necessary. Although you typically don’t need to worry too much about these rules, the compiler judges which rule it should follow based on the name of the creation method. Objects created via factory methods are managed slightly differently from objects that are created through traditional allocation and initialization or new because of the use of autorelease pool blocks. For more information on autorelease pool blocks and memory management in general, see Advanced Memory Management Programming Guide.
